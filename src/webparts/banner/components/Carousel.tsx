@@ -117,7 +117,7 @@ export default function Carousel({
       });
 
       if (files.length == 0) {
-        const el: ICarousel = {
+        /*const el: ICarousel = {
           id: "1",
           name: "Frame.png",
           title: "Frame.png",
@@ -131,7 +131,7 @@ export default function Carousel({
           // seq2: 1,
         };
 
-        carouselItems.push(el);
+        carouselItems.push(el);*/
       }
 
       if (carouselItems.length === 1) {
