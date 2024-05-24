@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.0",
+    "libraryName": "phab-banner",
+    "libraryId": "bf36f291-e71d-486b-99f7-0bbb0bc93ac8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "phabBanner",
+    "solutionShortDescription": "phabBanner description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

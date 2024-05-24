@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "phab-banner-client-side-solution",
+    "id": "bf36f291-e71d-486b-99f7-0bbb0bc93ac8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "phabBanner description"
+      },
+      "longDescription": {
+        "default": "phabBanner description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "phab-banner Feature",
+        "description": "The feature that activates elements of the phab-banner solution.",
+        "id": "798055da-e76b-4e28-9afb-e0adfc9d5a4f",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/phab-banner.sppkg"
+  }
+}

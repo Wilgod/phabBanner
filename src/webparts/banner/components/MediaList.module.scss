@@ -1,0 +1,104 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.lbCarouselMediaList {
+  section {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .uploadContainer {
+    div {
+      margin: 5px;
+      display: inline-block;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+    input::file-selector-button {
+      border: solid 2px #2C3E50;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+      font-weight: bold;
+    }
+  }
+  header {
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #ccc;
+  }
+  header, .row {
+    display: flex;
+  }
+  .listing {
+    overflow-x: scroll;
+    td {
+      text-align: left;
+    }
+    .name {
+      min-width: 200px;
+    }
+    .seqence {
+      min-width: 100px;
+      input {
+        width: 60px;
+      }
+    }
+    .size {
+      min-width: 80px;
+    }
+    .modified {
+      min-width: 160px;
+    }
+    .delete {
+      min-width: 50px;
+    }
+  }
+  .col {
+    display: flex;
+    .colContent {
+      display: flex;
+      align-items: center;
+    }
+    .seqContent {
+      input {
+        width: 80px;
+        padding-left: 5px;
+      }
+    }
+  }
+  .colModified {
+    flex-grow: 2;
+  }
+  .imgContainer {
+    .imgName, .thumbnail {
+      display: inline-flex;
+      align-items: center;
+    }
+    .thumbnail {
+      height: 50px;
+      padding-right: 10px;
+    }
+  }
+  .pointerCursor {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .delete:hover {
+    color: red;
+  }
+  .edit:hover {
+    color: #607d9b;
+  }
+  .fileInputWrap {
+    button {
+      border: solid 1px #2C3E50;
+      background-color: #2C3E50;
+      color: white;
+      margin-top: 5px;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+      font-weight: bold;
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+

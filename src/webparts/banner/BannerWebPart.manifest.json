@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8153a7c1-f6b3-44ff-b788-009ba495d130",
+  "alias": "BannerWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "loadLegacyFabricCss": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "iconImageUrl":"data:image/png;base64,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",
+    "group": { "default": "Advanced" },
+    "title": { "default": "banner" },
+    "description": { "default": "banner description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "banner",
+      "captionPosition": "bottom",
+      "autoplay": false,
+      "autoplaySpeed": 3000,
+      "pauseOnHover": true,
+      "displayStyle": "cover",
+      "layout":"1"
+    }
+  }]
+}

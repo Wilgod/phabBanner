@@ -1,0 +1,47 @@
+.reactSlickContainer {
+  img {
+    margin: 0 auto;
+  }
+  .slick-list {
+    width: calc(100% - 50px);
+    margin: 0 auto;
+  }
+  .slick-prev {
+    left: 0;
+    &::before {
+      color: #000000;
+    }
+  }
+  .slick-next {
+    right: 0;
+    &::before {
+      color: #000000;
+    }
+  }
+  .slick-dots {
+    bottom: 0;
+    button::before {
+      color: white;
+    }
+  }
+  .slick-img {
+    max-width: 100%;
+    max-height: 400px;
+  }
+  .slick-thumb {
+    li {
+      width: 60px;
+      height: 45px;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+      overflow: hidden;
+      line-height: 45px;
+    }
+    img{
+      filter: brightness(60%);
+      transition: filter 1s;
+    }
+    .slick-active img {
+      filter: brightness(100%);
+    }
+  }
+}

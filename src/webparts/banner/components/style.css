@@ -1,0 +1,143 @@
+* {box-sizing:border-box}
+
+/* Slideshow content */
+.content {
+  /* max-width: 1280px; */
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.carousel-item {
+  display: none;
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    position: relative;
+    /* border: 1px solid #ccc; */
+}
+
+.carousel-item-padd {
+  padding: 0 5px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 30rem;
+}
+
+.carousel-item video {
+  width: 100%;
+  height: 30rem;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: gray;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.caption {
+    color: #000;
+    font-size: 18px;
+    padding: 8px 12px;
+    position: absolute;
+    /* bottom: 27px; */
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+.caption-bottom {
+  bottom: 27px;
+}
+
+.caption-top {
+  top: 0px;
+}
+
+.caption-tleft {
+  top: 0px;
+  text-align: left !important;
+}
+
+.caption-tright {
+  top: 0px;
+  text-align: right !important;
+}
+
+.caption-bleft {
+  bottom: 27px;
+  text-align: left !important;
+}
+
+.caption-bright {
+  bottom: 27px;
+  text-align: right !important;
+}
+
+.text {
+  color: #000;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  /* bottom: 8px; */
+  width: 100%;
+  text-align: center;
+}
+
+.text-bottom {
+  bottom: 8px;
+}
+
+.text-top {
+  top: 27px;
+}
+
+.text-tleft {
+  top: 27px;
+  text-align: left !important;
+}
+
+.text-tright {
+  top: 27px;
+  text-align: right !important;
+}
+
+.text-bleft {
+  bottom: 8px;
+  text-align: left !important;
+}
+
+.text-bright {
+  bottom: 8px;
+  text-align: right !important;
+}
+
+.slick-dots {
+  bottom: -21px !important;
+}
