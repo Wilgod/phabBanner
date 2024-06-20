@@ -25,6 +25,7 @@ export interface ICarousel {
   id: string;
   name: string;
   title: string;
+  link:string;
   caption: string;
   type?: string;
   src: string;
@@ -97,12 +98,14 @@ export default function Carousel({
           name[1] === "gif"
         )
           filetype = "image";
-        else filetype = "video";
+        else if (name[1] === "mp4") filetype = "video";
+        else filetype = "audio";
 
         const el: ICarousel = {
           id: file.UniqueId,
           name: file.Name,
           title: file.Title,
+          link: file["ListItemAllFields"].Link,
           caption: file["ListItemAllFields"].Caption,
           type: filetype,
           src: file.ServerRelativeUrl.replace(/#/g, "%23"),
@@ -162,56 +165,80 @@ export default function Carousel({
       >
         <Slider ref={setSliderRef} {...settings}>
           {carousel.map((card, index) => (
-            <div
-              key={card.id}
-              className={
-                layout !== "2"
-                  ? "carousel-item"
-                  : "carousel-item carousel-item-padd"
-              }
-            >
-              {card.type === "image" && (
-                <img
-                  src={card.src}
-                  alt={card.title}
-                  style={{
-                    objectFit: layout === "1" ? props.displayStyle : "fill",
-                    borderRadius: props.borderRadius + "px",
-                    height: height + "rem",
-                  }}
-                />
-              )}
-              {card.type === "video" && (
-                <>
-                  <video
-                    controls
-                    autoPlay
-                    muted
-                    loop
+            <>
+              <div style={{textAlign:'center', fontSize:'18px', fontWeight:'bold', margin:'10px 5px'}}>
+                <a href={card.link}>{card.title}</a>
+              </div>
+              <div
+                key={card.id}
+                className={
+                  layout !== "2"
+                    ? "carousel-item"
+                    : "carousel-item carousel-item-padd"
+                }
+              >
+                {card.type === "image" && (
+                  <img
+                    src={card.src}
+                    alt={card.title}
                     style={{
+                      objectFit: layout === "1" ? props.displayStyle : "fill",
                       borderRadius: props.borderRadius + "px",
                       height: height + "rem",
                     }}
-                  >
-                    <source src={card.src} type="video/mp4"></source>
-                  </video>
-                </>
-              )}
+                  />
+                )}
+                {card.type === "video" && (
+                  <>
+                    <video
+                      controls
+                      autoPlay
+                      //muted
+                      loop
+                      style={{
+                        borderRadius: props.borderRadius + "px",
+                        height: height + "rem",
+                      }}
+                    >
+                      <source src={card.src} type="video/mp4"></source>
+                    </video>
+                  </>
+                )}
+                {card.type === "audio" && (
+                  <>
+                    <audio
+                      controls
+                      autoPlay
+                      //muted
+                      loop
+                      style={{
+                        borderRadius: props.borderRadius + "px",
+                        height: height + "rem",
+                        width:'100%'
+                      }}
+                    >
+                      <source src={card.src} type="audio/mp4"></source>
+                      Your browser does not support the audio element.
+                    </audio>
+                  </>
+                )}
 
-              <div className={"caption caption-" + props.captionPosition}>
-                {card.title && "Caption"}
+                <div className={"caption caption-" + props.captionPosition}>
+                  {card.title && "Caption"}
+                </div>
+                <div
+                  className={"text text-" + props.captionPosition}
+                  style={{
+                    fontSize: props.captionFontSize + "px",
+                    fontWeight: props.captionWeight,
+                    color: props.captionColor,
+                  }}
+                >
+                  {card.caption}
+                </div>
               </div>
-              <div
-                className={"text text-" + props.captionPosition}
-                style={{
-                  fontSize: props.captionFontSize + "px",
-                  fontWeight: props.captionWeight,
-                  color: props.captionColor,
-                }}
-              >
-                {card.caption}
-              </div>
-            </div>
+            </>
+            
           ))}
         </Slider>
         <a className="prev" onClick={sliderRef?.slickPrev}>

@@ -42,6 +42,7 @@ export default function MediaList({ context, props }: IMediaListProps) {
         id: item.UniqueId,
         name: item.Name,
         title: item.Title,
+        link: item["ListItemAllFields"].Link,
         caption: item["ListItemAllFields"].Caption,
         src: item.ServerRelativeUrl.replace(/#/g, "%23"),
         size:
