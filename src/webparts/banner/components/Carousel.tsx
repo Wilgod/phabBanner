@@ -224,7 +224,7 @@ export default function Carousel({
                 )}
 
                 <div className={"caption caption-" + props.captionPosition}>
-                  {card.title && "Caption"}
+                  {/*card.title && "Caption" */}
                 </div>
                 <div
                   className={"text text-" + props.captionPosition}
