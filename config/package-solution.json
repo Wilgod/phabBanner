@@ -3,7 +3,7 @@
   "solution": {
     "name": "phab-banner-client-side-solution",
     "id": "bf36f291-e71d-486b-99f7-0bbb0bc93ac8",
-    "version": "1.0.0.2",
+    "version": "1.0.0.3",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

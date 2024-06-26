@@ -49,6 +49,11 @@ export interface IBannerWebPartProps {
   captionFontSize: number;
   captionWeight: string;
   captionColor: string;
+  showHeader:boolean;
+  headerTitle:string;
+  headerFontSize:number;
+  headerFontWeight:string;
+  headerColor:string;
 }
 
 export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartProps> {
@@ -168,7 +173,12 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
             borderRadius: this.properties.borderRadius,
             captionFontSize: this.properties.captionFontSize,
             captionWeight: this.properties.captionWeight,
-            captionColor: this.properties.captionColor
+            captionColor: this.properties.captionColor,
+            showHeader:this.properties.showHeader,
+            headerTitle: this.properties.headerTitle,
+            headerFontSize: this.properties.headerFontSize,
+            headerFontWeight: this.properties.headerFontWeight,
+            headerColor:this.properties.headerColor
         });
 
         ReactDom.render(element, this.domElement);
@@ -337,6 +347,46 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
                   ],
               };
         
+            const headerConfiguration: IPropertyPaneGroup = (!this.createListBoolean && (this.properties.listName !== undefined && this.properties.listName !== "")) ?
+            {
+            groupName: "Header Configuration",
+            groupFields: [
+                PropertyPaneCheckbox("showHeader", {
+                text: "Show Header",
+                checked: false,
+                }),
+                PropertyPaneTextField("headerTitle", {
+                label: "Header",
+                value: this.properties.headerTitle === undefined ?  this.properties.listName :this.properties.headerTitle,
+                }),
+                PropertyFieldNumber("headerFontSize", {
+                key: "headerFontSize",
+                label: "Header Font Size (px)",
+                value: this.properties.headerFontSize === undefined ? 14:this.properties.headerFontSize,
+                maxValue: 50,
+                minValue: 12,
+                }),
+                PropertyPaneDropdown('headerFontWeight', {
+                label: 'Header Font Weight',
+                options: [
+                    { key: 'normal', text: "Normal" },
+                    { key: 'bold', text: "Bold" },
+                    { key: 'lighter', text: "Lighter" }
+                ],
+                selectedKey: 'bold'
+                }),
+                PropertyFieldColorPicker("headerColor", {
+                label: "Header Color",
+                selectedColor: this.properties.headerColor === undefined ? "#000":this.properties.headerColor,
+                onPropertyChange: this.onPropertyPaneFieldChanged,
+                properties: this.properties,
+                key: "headerColor",
+                })
+            ],
+            } : {
+                groupName: '',
+                groupFields: []
+            }
         const CaptionGroup: IPropertyPaneGroup = {
             groupName: "Caption Settings",
             groupFields: [
@@ -386,6 +436,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<IBannerWebPartP
                     },*/
                     groups: [
                         selectCreateListGroup,
+                        headerConfiguration,
                         CaptionGroup,
                         {
                             groupName: "Carousel settings",

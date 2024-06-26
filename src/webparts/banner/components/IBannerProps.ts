@@ -27,4 +27,9 @@ export interface IBannerProps {
   captionFontSize: number;
   captionWeight: string;
   captionColor: string;
+  showHeader:boolean;
+  headerTitle:string;
+  headerFontSize:number;
+  headerFontWeight:string;
+  headerColor:string;
 }

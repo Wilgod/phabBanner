@@ -48,6 +48,7 @@ export default function Carousel({
   let height = props.height ? props.height / 16 : 500 / 16;
   let containerHeight = props.height ? parseInt(props.height) + 25 : 525;
 
+  
   const handleAfterChange = (current: number) => {
     const item = carousel[current];
 
@@ -72,6 +73,11 @@ export default function Carousel({
     autoplaySpeed: props.autoplaySpeed,
     pauseOnHover: props.pauseOnHover,
     afterChange: handleAfterChange,
+    beforeChange: (oldIndex, newIndex) => {
+      // Pause all videos when changing slides
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => video.pause());
+    }
   };
 
   useEffect(() => {
@@ -152,9 +158,33 @@ export default function Carousel({
     //if (props.listName !== undefined && carousel.length === 0)
     void getCorousel();
   }, [props.listName]);
-
+  console.log('carousel',carousel.length)
   return (
     <>
+      {props.showHeader && (
+        <div className="ms-Grid">
+          <div className="ms-Grid-row" style={{ margin: 0 }}>
+            <div className="ms-Grid-col ms-sm12 block" style={{ padding: 0 }}>
+              <div className={styles.header} style={{ padding: "20px 20px 0" }}>
+                <span style={{ color: props.headerColor }}>
+                  {
+                    <span
+                      style={{
+                        fontSize: props.headerFontSize + "px",
+                        fontWeight: props.headerFontWeight,
+                      }}
+                    >
+                      {props.headerTitle === undefined
+                        ? props.listName
+                        : props.headerTitle}
+                    </span>
+                  }
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div
         className="content"
         style={{
@@ -193,7 +223,7 @@ export default function Carousel({
                     <video
                       controls
                       autoPlay
-                      //muted
+                      muted
                       loop
                       style={{
                         borderRadius: props.borderRadius + "px",
@@ -209,7 +239,7 @@ export default function Carousel({
                     <audio
                       controls
                       autoPlay
-                      //muted
+                      muted
                       loop
                       style={{
                         borderRadius: props.borderRadius + "px",
