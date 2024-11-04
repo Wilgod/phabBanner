@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.css";
 import MediaList from "./MediaList";
-
+import arraySort from "array-sort";
 export interface ICarouselProps {
   context: WebPartContext;
   styles: any;
@@ -89,6 +89,9 @@ export default function Carousel({
         .rootFolder.files.expand("ListItemAllFields")();
 
       const carouselItems: ICarousel[] = [];
+
+      debugger;
+      let addFiles = [];
       files.forEach((file) => {
         let filetype = "image";
         const name = file.Name.split(".");
@@ -107,7 +110,19 @@ export default function Carousel({
         else if (name[1] === "mp4") filetype = "video";
         else filetype = "audio";
 
-        const el: ICarousel = {
+        addFiles.push({
+          id: file.UniqueId,
+          name: file.Name,
+          title: file.Title,
+          link: file["ListItemAllFields"].Link,
+          caption: file["ListItemAllFields"].Caption,
+          type: filetype,
+          src: file.ServerRelativeUrl.replace(/#/g, "%23"),
+          size: fileSize,
+          modified: new Date(file.TimeLastModified).toLocaleString(),
+          sequence: file["ListItemAllFields"].Sequence,
+        })
+        /*const el: ICarousel = {
           id: file.UniqueId,
           name: file.Name,
           title: file.Title,
@@ -122,9 +137,27 @@ export default function Carousel({
           // seq2: 1,
         };
 
-        carouselItems.push(el);
+        carouselItems.push(el);*/
       });
+      arraySort(addFiles, "sequence");
+      for (let add of addFiles) {
+        const el: ICarousel = {
+          id: add.id,
+          name: add.name,
+          title: add.title,
+          link: add.link,
+          caption: add.caption,
+          type: add.type,
+          src: add.src,
+          size: add.size,
+          modified: add.modified,
+          // seq: file["ListItemAllFields"].Sequence,
+          // //seq2 is used to check if seq input field change
+          // seq2: 1,
+        };
 
+        carouselItems.push(el);
+      }
       if (files.length == 0) {
         /*const el: ICarousel = {
           id: "1",
